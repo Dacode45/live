@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var routes = require('./routes/create');
+var users = require('./routes/live');
 
 var APP_ID = 7740523506827330;
 var APP_SECRET = "l6l8QHRBUVJyn+1NqjZq7p4uERt+gTc17a7KA6fIV/tNwfTjxkrGTfc3np909WnDCwoQ4Y4p90Q69vWRcOv2fg==";
@@ -16,17 +18,6 @@ global.APP_SECRET = APP_SECRET;
 
 var pg = require('pg');
 
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.send(result.rows); }
-    });
-  });
-})
 
 var app = express();
 
@@ -42,8 +33,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    console.log(err);
+
+  });
+})
+
+
 app.use('/', routes);
 app.use('/users', users);
+app.use('/create', create);
+app.use('/live', live);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
