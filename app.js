@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var routes = require('./routes/create');
-var users = require('./routes/live');
+var create = require('./routes/create');
+var live = require('./routes/live');
 
 var APP_ID = 7740523506827330;
 var APP_SECRET = "l6l8QHRBUVJyn+1NqjZq7p4uERt+gTc17a7KA6fIV/tNwfTjxkrGTfc3np909WnDCwoQ4Y4p90Q69vWRcOv2fg==";
@@ -32,13 +32,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    console.log(err);
-
-  });
-})
 
 
 app.use('/', routes);
