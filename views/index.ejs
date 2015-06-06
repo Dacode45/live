@@ -1,0 +1,87 @@
+Skip to content
+This repository
+Explore
+Gist
+Blog
+Help
+@Dacode45 Dacode45
+
+ Unwatch 4
+  Star 0
+ Fork 1twizzlynn/g4
+ branch: master  g4/index.html
+@ijsuarezijsuarez 2 hours ago latest
+2 contributors @twizzlynn @ijsuarez
+RawBlameHistory    71 lines (53 sloc)  2.101 kB
+
+<!doctype html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <title>page</title>
+        <link rel="stylesheet" href="node_modules/materialize-css/bin/materialize.css">
+        <link rel="stylesheet" href="css/animate.css">
+</head>
+
+<body>
+        <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/underscore/underscore-min.js"></script>
+        <script src="node_modules/materialize-css/bin/materialize.js"></script>
+
+        <div class="container center-align">
+
+                <h1 class="animated fadeInDownBig">New live card</h1>
+
+                <!--enter topic title-->
+                <div class="input-field col s6">
+                        <input type="text" class="validate live-card-name">
+                        <label for="live-card-name">Live card name</label>
+
+
+                </div>
+                <div class="input-field col s6">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Add Card Snippet</label>
+                </div>
+                <a class="waves-effect waves-light btn-large">Save Snippet</a>
+
+                <!--single live card page-->
+
+
+
+
+
+                <div id="butt"></div>
+                <script type="text/jsx">
+                        var LikeButton = React.createClass({
+        getInitialState: function() {
+            return {liked: false};
+        },
+        handleClick: function(event) {
+            this.setState({liked: !this.state.liked});
+        },
+        render: function() {
+            var text = this.state.liked ? 'like' : 'haven\'t liked';
+            return (
+                <p onClick={this.handleClick}>
+                You {text} this. Click to toggle.
+                </p>
+            );
+        }
+    });
+
+    React.render(
+        <LikeButton />,
+        document.getElementById('butt')
+    );
+                </script>
+        </div>
+
+</body>
+
+</html>
+Status API Training Shop Blog About
+© 2015 GitHub, Inc. Terms Privacy Security Contact
