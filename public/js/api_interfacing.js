@@ -10,7 +10,7 @@ function retrievePosts(locker_id) {
     });
 
     connection.connect();
-    var query_text = "Select posts.id from posts, live_cards where post.card_id="+locker_id; 
+    var query_text = "Select posts.id from posts, cards where posts.card_id="+locker_id; 
     connection.query(query_text, function(err, rows, fields) {
       if (err) throw err;
 
