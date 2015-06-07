@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<title>GlobalHack 4</title>
+<style type="text/css">
+body{
+	width: 760px; /* how wide to make your web page */
+	background-color: teal; /* what color to make the background */
+	margin: 0 auto;
+	padding: 0;
+	font:12px/16px Verdana, sans-serif; /* default font */
+}
+div#main{
+	background-color: #FFF;
+	margin: 0;
+	padding: 10px;
+}
+</style>
+<script>
+var live_cards = [];
+
+function add_live_card(live_id)
+{
+    live_cards[live_id] = [];
+}
+
+function add_base_card(live_id, json_card)
+{
+    var temp_card_list = live_cards[live_id];
+    temp_card_list[temp_card_list.length] = json_card;
+}
+
+function append_card(api_res)
+{
+    add_live_card(api_res.app_data.live_id);
+    add_base_card(api_res.app_data.live_id, api_res);
+}
+
+function get_cards_in_live(live_id)
+{
+    return live_cards[live_id];
+}
+</script>
+</head>
+<body><div id="main">
+ 
+<!-- CONTENT HERE -->
+ 
+</div></body>
+</html>
