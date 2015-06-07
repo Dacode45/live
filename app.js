@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var create = require('./routes/create');
 var live = require('./routes/live');
 
+
 var APP_ID = 7740523506827330;
 var APP_SECRET = "l6l8QHRBUVJyn+1NqjZq7p4uERt+gTc17a7KA6fIV/tNwfTjxkrGTfc3np909WnDCwoQ4Y4p90Q69vWRcOv2fg==";
 
@@ -18,6 +19,7 @@ global.APP_SECRET = APP_SECRET;
 
 var pg = require('pg');
 
+var db = require('./db_connect');
 
 var app = express();
 
@@ -37,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/create', create);
+
 app.use('/live', live);
 
 // catch 404 and forward to error handler
