@@ -15,12 +15,14 @@
         <script src="jquery/dist/jquery.min.js"></script>
         <script src="underscore/underscore-min.js"></script>
         <script src="materialize-css/bin/materialize.js"></script>
-
+       
+        
         <div class="container center-align">
 
                 <h1 class="animated fadeInDownBig">New live card</h1>
 
                 <!--enter topic title-->
+                <form action="/create" method="/post">
                 <div class="input-field col s6">
                         <input type="text" class="validate live-card-name">
                         <label for="live-card-name">Live card name</label>
@@ -40,6 +42,7 @@
 
 
                 <div id="butt"></div>
+              </form>
                 <script type="text/jsx">
                         var LikeButton = React.createClass({
         getInitialState: function() {

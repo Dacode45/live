@@ -1,6 +1,9 @@
 //This function should return all the posts id
 // Assuming that the url has the id in it
-function retrievePosts(locker_id) {
+
+
+
+exports.retrievePosts = function retrievePosts(locker_id) {
     var id_lists;
     var mysql      = require('mysql');
     var connection = mysql.createConnection({
@@ -10,7 +13,7 @@ function retrievePosts(locker_id) {
     });
 
     connection.connect();
-    var query_text = "Select posts.id from posts, cards where posts.card_id="+locker_id; 
+    var query_text = "Select posts.id from posts, live_cards where post.card_id="+locker_id;
     connection.query(query_text, function(err, rows, fields) {
       if (err) throw err;
 
@@ -19,12 +22,12 @@ function retrievePosts(locker_id) {
     });
 
     connection.end();
-    
+
     return id_lists;
 }
 
 // Store the the post ino the database
-function storePostId(post_id, live_id) {
+exports.storePostId = function storePostId(post_id, live_id) {
 
     var client = new pg.Client(conString);
     client.connect(function(err) {
@@ -43,7 +46,7 @@ function storePostId(post_id, live_id) {
 }
 
 // Store the the live card into the database
-function storePostId(live_id) {
+exports.storeLiveId = function storeLiveId(live_id) {
 
     var client = new pg.Client(conString);
     client.connect(function(err) {
