@@ -15,7 +15,11 @@ function retrievePosts(locker_id) {
     connection.connect();
     var query_text = "Select posts.id from posts, cards where posts.card_id="+locker_id;
     connection.query(query_text, function(err, rows, fields) {
-      if (err) throw err;
+      
+      if (err) {
+        console.log("error")
+        throw err
+      }
 
       console.log('The solution is: ', rows);
       id_lists = rows;
