@@ -10,64 +10,61 @@
 </head>
 
 <body>
-        <script src="https://fb.me/react-0.13.3.js"></script>
-    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
-        <script src="jquery/dist/jquery.min.js"></script>
-        <script src="underscore/underscore-min.js"></script>
-        <script src="materialize-css/bin/materialize.js"></script>
-       
-        
-        <div class="container center-align">
+<script src="https://fb.me/react-0.13.3.js"></script>
+<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/underscore/underscore-min.js"></script>
+<script src="node_modules/materialize-css/bin/materialize.js"></script>
 
-                <h1 class="animated fadeInDownBig">New live card</h1>
-
-                <!--enter topic title-->
-                <form action="/create" method="/post">
-                <div class="input-field col s6">
-                        <input type="text" class="validate live-card-name">
-                        <label for="live-card-name">Live card name</label>
+<div class="container center-align">
 
 
-                </div>
-                <div class="input-field col s6">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Add Card Snippet</label>
-                </div>
-                <a class="waves-effect waves-light btn-large">Save Snippet</a>
+    <!--create a live card-->
+    <h1>New live card</h1>
 
-                <!--single live card page-->
-
-
-
-
-
-                <div id="butt"></div>
-              </form>
-                <script type="text/jsx">
-                        var LikeButton = React.createClass({
-        getInitialState: function() {
-            return {liked: false};
-        },
-        handleClick: function(event) {
-            this.setState({liked: !this.state.liked});
-        },
-        render: function() {
-            var text = this.state.liked ? 'like' : 'haven\'t liked';
-            return (
-                <p onClick={this.handleClick}>
-                You {text} this. Click to toggle.
-                </p>
-            );
-        }
-    });
-
-    React.render(
-        <LikeButton />,
-        document.getElementById('butt')
-    );
-                </script>
+    <form action="/create" method="post">
+        <div class="input-field col s6">
+            <input type="text" class="validate live-card-name">
+            <label for="live-card-name">Live card name</label>
         </div>
+        <div class="input-field col s6">
+            <a class='dropdown-button btn' href='#' data-activates='topic-dropdown'>Topic</a>
+
+            <ul id='topic-dropdown' class='dropdown-content'>
+                <li><a href="#!">one</a></li>
+                <li><a href="#!">two</a></li>
+                <li><a href="#!">three</a></li>
+            </ul>
+        </div>
+        <div class="input-field col s6">
+            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <label for="textarea1">Card content</label>
+        </div>
+        <a class="waves-effect waves-light btn-large">Save</a>
+    </form>
+
+    <br><br><br><br>
+    <!--add content to a live card-->
+    <h1>Add content to live card</h1>
+
+    <form action="" method="post">
+        <div class="input-field col s6">
+            <a class='dropdown-button btn' href='#' data-activates='card-dropdown'>Live Card</a>
+            <ul id='card-dropdown' class='dropdown-content'>
+                <li><a href="#!">one</a></li>
+                <li><a href="#!">two</a></li>
+                <li><a href="#!">three</a></li>
+            </ul>
+        </div>
+        <div class="input-field col s6">
+            <textarea id="textarea2" class="materialize-textarea"></textarea>
+            <label for="textarea2">Card content</label>
+        </div>
+        <a class="waves-effect waves-light btn-large">Save</a>
+    </form>
+
+
+</div>
 
 </body>
-
 </html>

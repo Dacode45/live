@@ -11,8 +11,8 @@ var create = require('./routes/create');
 var live = require('./routes/live');
 
 
-var APP_ID = 7740523506827330;
-var APP_SECRET = "l6l8QHRBUVJyn+1NqjZq7p4uERt+gTc17a7KA6fIV/tNwfTjxkrGTfc3np909WnDCwoQ4Y4p90Q69vWRcOv2fg==";
+var APP_ID = 7744613892751426;
+var APP_SECRET = "P0hoUoVqMVr4eeej75++vSXVdxDRKJEKm/TaEEddJPxQeQnDlC5auWAZTQdp7vcnzNdg6VQ33E/MVF3Me7SIsQ=="
 
 global.APP_ID = APP_ID;
 global.APP_SECRET = APP_SECRET;

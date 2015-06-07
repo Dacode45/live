@@ -18,9 +18,11 @@ div#main{
 </style>
 <script>
 var live_cards = [];
+var live_card_ids = [];
 
 function add_live_card(live_id)
 {
+    live_card_ids[live_card_ids.length] = live_id;
     live_cards[live_id] = [];
 }
 
@@ -39,6 +41,28 @@ function append_card(api_res)
 function get_cards_in_live(live_id)
 {
     return live_cards[live_id];
+}
+
+function get_live_id_name(live_id)
+{
+    var temp_card = live_cards[live_id];
+    return temp_card[0].app_data.live_name;
+}
+
+function parse_json_array_to_dom_array(json_array)
+{
+    var dom_array = [];
+    for(var i = json_array.length - 1; i != 0; i--)
+    {
+        var temp_json = json_array[i];
+        dom_array[dom_array.length] = parse_json_to_dom(temp_json.name, temp_json.text);
+    }
+    return dom_array;
+}
+
+function parse_json_to_dom(name, text)
+{
+    //what goes in here idk parse the info to be injected into html objects
 }
 </script>
 </head>

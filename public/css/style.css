@@ -1,8 +1,23 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.prev-post {
+	border-top: 1px solid gray;
+	padding: 15px;
+	background-color: #eee;
 }
 
-a {
-  color: #00B7FF;
+.prev-post:last-child {
+	border-bottom: 1px solid gray;
+}
+
+.prev-post:hover {
+	background-color: #FAFAFA;
+	cursor: pointer;
+}
+
+.bottom a:hover {
+	background-color: gray;
+}
+
+.more-btn {
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
