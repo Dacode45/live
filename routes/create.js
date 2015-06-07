@@ -4,12 +4,19 @@ var request = require('request');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  request('http://api.globalhack4.test.lockerdome.com/app_create_content?{"app_id":7740523506827330,"app_secret":"l6l8QHRBUVJyn+1NqjZq7p4uERt+gTc17a7KA6fIV/tNwfTjxkrGTfc3np909WnDCwoQ4Y4p90Q69vWRcOv2fg==","app_data":{"fun":"times"},"name":"Some App Content","text":"Short description of your content"}', function (error, response, body) {
-      if (!error && res.statusCode == 200) {
-          console.log(body); // Show the HTML for the Google homepage.
-      }
+  var query = {
+    app_id: global.APP_ID,
+    app_secret: global.APP_SECRET,
+    content_id: 7742596533190723
+  }
+
+  request.get("http://api.globalhack4.test.lockerdome.com/app_fetch_content?"+JSON.stringify(query), function(data){
+    res.send(arguments);
   });
-  res.render('index', { title: 'Express' });
 });
+
+router.post('/', function(req,res, next){
+  res.send(req);
+})
 
 module.exports = router;
