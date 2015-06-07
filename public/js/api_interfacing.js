@@ -5,8 +5,8 @@ function retrievePosts(locker_id) {
     var mysql      = require('mysql');
     var connection = mysql.createConnection({
       host     : 'localhost',
-      user     : 'me',
-      password : 'secret'
+      user     : 'newuser',
+      password : 'password'
     });
 
     connection.connect();
@@ -14,7 +14,7 @@ function retrievePosts(locker_id) {
     connection.query(query_text, function(err, rows, fields) {
       if (err) throw err;
 
-      console.log('The solution is: ', rows[0].solution);
+      console.log('The solution is: ', rows);
       id_lists = rows;
     });
 
