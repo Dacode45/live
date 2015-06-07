@@ -15,7 +15,32 @@
         <script src="jquery/dist/jquery.min.js"></script>
         <script src="underscore/underscore-min.js"></script>
         <script src="materialize-css/bin/materialize.js"></script>
+     
+        <script type="text/javascript">
+        retrievePosts(0);
+        console.log("You got here");
+        function retrievePosts(locker_id) {
+            var id_lists;
+            var mysql      = require('mysql');
+            var connection = mysql.createConnection({
+              host     : 'localhost',
+              user     : 'newuser',
+              password : 'password'
+            });
 
+            connection.connect();
+            var query_text = "Select posts.id from posts, live_cards where post.card_id="+locker_id; 
+            connection.query(query_text, function(err, rows, fields) {
+              if (err) throw err;
+
+              console.log('The solution is: ', rows);
+              id_lists = rows;
+            });
+            connection.end();
+            return id_lists;
+        }
+        </script>    
+        
         <div class="container center-align">
 
                 <h1 class="animated fadeInDownBig">New live card</h1>
