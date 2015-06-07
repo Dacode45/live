@@ -1,27 +1,25 @@
-var pg = require('pg');
-var conString = process.env.DATABASE_URL;
-
 //This function should return all the posts id
 // Assuming that the url has the id in it
 function retrievePosts(locker_id) {
     var id_lists;
-
-    var client = new pg.Client(conString);
-    client.connect(function(err) {
-        if (err) {
-            return console.error('could not connect to postgres', err);
-        }
-        var locker_id = 0; //FIXME
-        client.query("Select posts.id from posts, live_cards where post.card_id=" + locker_id, function(err, result) {
-            if (err) {
-                return console.error('error running query', err);
-            }
-            console.log(result);
-            //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
-            client.end();
-            id_lists = result;
-        });
+    var mysql      = require('mysql');
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'me',
+      password : 'secret'
     });
+
+    connection.connect();
+    var query_text = "Select posts.id from posts, live_cards where post.card_id="+locker_id; 
+    connection.query(query_text, function(err, rows, fields) {
+      if (err) throw err;
+
+      console.log('The solution is: ', rows[0].solution);
+      id_lists = rows;
+    });
+
+    connection.end();
+    
     return id_lists;
 }
 
